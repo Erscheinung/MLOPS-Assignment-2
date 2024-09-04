@@ -1,3 +1,11 @@
+import os
+import sys
+
+# Error debugging for running on conda
+current_path = os.path.abspath(__file__)
+root_path = os.path.dirname(os.path.dirname(current_path))
+sys.path.append(root_path)
+
 import pandas as pd
 import numpy as np
 from sklearn.datasets import load_iris

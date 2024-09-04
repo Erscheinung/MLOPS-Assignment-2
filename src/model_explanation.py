@@ -54,6 +54,10 @@ def iris_model_explanation_pipeline():
     """Pipeline for explaining the Iris classification model."""
     model, X_test, feature_names = load_model_and_data()
     explain_model(model, X_test, feature_names)
+    
+def main():
+    """Main function to run the model explanation pipeline."""
+    iris_model_explanation_pipeline()
 
 if __name__ == "__main__":
-    iris_model_explanation_pipeline()
+    main()

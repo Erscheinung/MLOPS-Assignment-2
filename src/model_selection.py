@@ -69,6 +69,10 @@ def iris_model_selection_pipeline():
     # Save the best model
     joblib.dump(best_model, "models/best_model.pkl")
     print("Best model saved to: models/best_model.pkl")
+    
+def main():
+    """Main function to run the model selection pipeline."""
+    iris_model_selection_pipeline()
 
 if __name__ == "__main__":
-    iris_model_selection_pipeline()
+    main()
