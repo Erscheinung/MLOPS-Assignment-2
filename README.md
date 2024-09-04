@@ -37,4 +37,4 @@ Screenshots:
 
 [ZenML preprocessing script logs](Terminal-Preprocessing.png)
 
-[ZenML Stacks](ZenML dashboard.png)
+[ZenML Stacks](/ZenML%20dashboard.png)
