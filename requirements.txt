@@ -1,0 +1,9 @@
+zenml
+pandas
+numpy
+scikit-learn
+ydata-profiling
+pycaret
+joblib
+shap
+matplotlib
