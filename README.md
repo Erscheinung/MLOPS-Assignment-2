@@ -24,11 +24,17 @@ It getting issues while running on a conda environment, run:
 
 To view the zenml dashboard:
 
-`zenml up --blocking`
+`zenml up --blocking` on a separate terminal
 
-`zenml connect --url <ENTER URL FROM ABOVE OUTPUT>`
+run `zenml connect --url <ENTER URL FROM ABOVE OUTPUT>`
 
-username: default
+Credentials:
 
-password: [BLANK, press ENTER]
+- username: default
+- password: [BLANK, press ENTER]
 
+Screenshots:
+
+[ZenML preprocessing script logs](Terminal-Preprocessing.png)
+
+[ZenML Stacks](ZenML dashboard.png)
