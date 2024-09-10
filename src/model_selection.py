@@ -29,13 +29,21 @@ def automl_model_selection(
     data['target'] = y_train
     
     # Initialize PyCaret setup
-    clf = setup(data=data, target='target', silent=True, use_gpu=True)
+    clf = setup(data=data, target='target', use_gpu=True)
     
     # Compare models
     best_model = compare_models(n_select=5)
     
     # Get the results
     model_results = pull()
+    
+    # Save the results
+    model_results.to_csv("results/model_comparison_results.csv")
+    print("Model comparison results saved to: results/model_comparison_results.csv")
+    
+    # Save the best model
+    joblib.dump(best_model, "models/best_model.pkl")
+    print("Best model saved to: models/best_model.pkl")
     
     return best_model, model_results
 
@@ -60,15 +68,9 @@ def iris_model_selection_pipeline():
     """Pipeline for model selection and evaluation on the Iris dataset."""
     X_train, X_test, y_train, y_test = load_preprocessed_data()
     best_model, model_results = automl_model_selection(X_train, y_train)
-    evaluate_model(best_model, X_test, y_test)
-    
-    # Save the results
-    model_results.to_csv("results/model_comparison_results.csv")
-    print("Model comparison results saved to: results/model_comparison_results.csv")
-    
-    # Save the best model
-    joblib.dump(best_model, "models/best_model.pkl")
-    print("Best model saved to: models/best_model.pkl")
+    # evaluate_model(best_model, X_test, y_test)
+
+
     
 def main():
     """Main function to run the model selection pipeline."""
