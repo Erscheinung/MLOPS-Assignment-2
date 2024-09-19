@@ -7,4 +7,4 @@ pycaret
 joblib
 shap
 matplotlib
-zeml[server]
+zenml[server]
