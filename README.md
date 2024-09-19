@@ -26,7 +26,7 @@ To view the zenml dashboard:
 
 `zenml up --blocking` on a separate terminal
 
-run `zenml connect --url <ENTER URL FROM ABOVE OUTPUT>`
+run `zenml connect --url=http://<ENTER URL FROM ABOVE OUTPUT>`
 
 Credentials:
 
