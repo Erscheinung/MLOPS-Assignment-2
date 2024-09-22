@@ -2,7 +2,7 @@ from zenml import pipeline, step
 from zenml.client import Client
 import pandas as pd
 import numpy as np
-from pycaret.classification import setup, compare_models, pull, predict_model
+from pycaret.classification import setup, save_model, compare_models, pull, predict_model
 from sklearn.metrics import accuracy_score, classification_report
 import joblib
 from typing import Tuple, Any
@@ -42,7 +42,7 @@ def automl_model_selection(
     print("Model comparison results saved to: results/model_comparison_results.csv")
     
     # Save the best model
-    joblib.dump(best_model, "models/best_model.pkl")
+    save_model(best_model, "models/best_model")
     print("Best model saved to: models/best_model.pkl")
     
     return best_model, model_results
