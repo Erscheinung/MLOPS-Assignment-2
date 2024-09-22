@@ -18,7 +18,6 @@ def load_preprocessed_data() -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.nda
     
     return X_train, X_test, y_train, y_test
 
-@step
 def automl_model_selection(
     X_train: np.ndarray,
     y_train: np.ndarray
@@ -27,25 +26,28 @@ def automl_model_selection(
     # Prepare the data for PyCaret
     data = pd.DataFrame(X_train, columns=[f'feature_{i}' for i in range(X_train.shape[1])])
     data['target'] = y_train
-    
+   
     # Initialize PyCaret setup
     clf = setup(data=data, target='target', use_gpu=True)
-    
-    # Compare models
-    best_model = compare_models(n_select=5)
-    
+   
+    # Compare models and select the best one
+    best_model = compare_models(n_select=1)  # Changed from 5 to 1
+   
     # Get the results
     model_results = pull()
-    
+   
     # Save the results
     model_results.to_csv("results/model_comparison_results.csv")
     print("Model comparison results saved to: results/model_comparison_results.csv")
-    
+   
+    # Finalize the model
+    final_model = finalize_model(best_model)
+   
     # Save the best model
-    save_model(best_model, "models/best_model")
+    save_model(final_model, "models/best_model")
     print("Best model saved to: models/best_model.pkl")
-    
-    return best_model, model_results
+   
+    return final_model, model_results
 
 @step
 def evaluate_model(
