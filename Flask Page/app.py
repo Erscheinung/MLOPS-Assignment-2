@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
-
 # Use an environment variable with a default fallback
 model_path = os.environ.get('MODEL_PATH', 'best_model')
 
@@ -69,4 +68,5 @@ def predict():
     return render_template('index.html', prediction=prediction, probabilities=probabilities, error=error)
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 8000))
+    app.run(host='0.0.0.0', port=port)
